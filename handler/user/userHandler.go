@@ -10,10 +10,12 @@ import (
 	"net/http"
 )
 
-func Login(c *gin.Context) {
-	username := c.Param("username")
-	password := c.Param("password")
+var Token string
 
+func Login(c *gin.Context) {
+	userID := c.Param("userID")
+	password := c.Param("password")
+	role := c.Param("role")
 	result := model.Result{
 		Code:    200,
 		Message: "登录成功",
@@ -22,42 +24,42 @@ func Login(c *gin.Context) {
 
 	claims := &model.JWTClaims{
 		StandardClaims: jwt.StandardClaims{},
-		UserID:         1,
 		Password:       password,
-		Username:       username,
-		FullName:       username,
+		Username:       userID,
+		FullName:       userID,
 		Permissions:    []string{},
+		Role:           role,
 	}
 
-	signedToken,err := getToken(claims)
+	signedToken, err := getToken(claims)
 	if err != nil {
-		result.Message = "登录失败"
-		c.JSON(http.StatusOK, gin.H{"result":result})
+		result.Message = "ErrorReasonReLogin"
+		c.JSON(http.StatusOK, gin.H{"result": result})
 	}
 	if initDB.TokenExist(signedToken) == true {
 		result.Data = "Bearer" + signedToken
 		c.JSON(200, gin.H{"result": result})
-	}else {
+		Token = signedToken
+	} else {
 		result.Message = "登陆失败，用户名与密码不匹配"
 		c.JSON(200, gin.H{"result": result})
 	}
 
 }
 
-
-func getToken(claims *model.JWTClaims)(string,error){
+func getToken(claims *model.JWTClaims) (string, error) {
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, claims)
 	signedToken, err := token.SignedString([]byte(config.Secret))
 	if err != nil {
-		return "",errors.New(config.ErrorReasonServerBusy)
+		return "", errors.New(config.ErrorReasonServerBusy)
 	}
-	return signedToken,nil
+	return signedToken, nil
 }
 
-
 func Register(c *gin.Context) {
-	username := c.Param("username")
+	userID := c.Param("userID")
 	password := c.Param("password")
+	role := c.Param("role")
 
 	result := model.Result{
 		Code:    200,
@@ -66,26 +68,31 @@ func Register(c *gin.Context) {
 	}
 
 	claims := &model.JWTClaims{
-		UserID:      1,
-		Username:    username,
-		Password:    password,
-		FullName:    username,
-		Permissions: []string{},
+		StandardClaims: jwt.StandardClaims{},
+		Password:       password,
+		Username:       userID,
+		FullName:       userID,
+		Permissions:    []string{},
+		Role:           role,
 	}
 
-	signedToken,err:=getToken(claims)
+	signedToken, err := getToken(claims)
 	if err != nil || initDB.TokenExist(signedToken) {
 		result.Message = "注册失败，账号已存在"
-		c.JSON(200, gin.H{"result":result})
-	}  else {
+		c.JSON(200, gin.H{"result": result})
+	} else {
 		user := initDB.User{
-			Token:    signedToken,
-			Username: username,
-			Sex:      "nan",
+			Token:  signedToken,
+			UserID: userID,
+			Roles:  role,
 		}
-		initDB.Db.Create(&user)
+		err := initDB.Db.Create(&user).Error
+		if err != nil {
+			c.JSON(200, gin.H{"result": "角色重复"})
 
-		c.JSON(200, gin.H{"result":result})
+		} else {
+			c.JSON(200, gin.H{"result": result})
+		}
 	}
 
 }

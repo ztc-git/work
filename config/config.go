@@ -5,9 +5,8 @@ var (
 	ExpireTime = 3600
 )
 
-
-
-const(
+const (
 	ErrorReasonServerBusy = "服务器繁忙"
-	ErrorReasonReLogin = "请重新登陆"
+	ErrorReasonReLogin    = "请重新登陆"
+	ErrorReasonUnLogin    = "请先登录"
 )
