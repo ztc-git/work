@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ba7236ca-4149-4f81-b86d-536d24e2f1b7" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Database/db.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/config.go" beforeDir="false" afterPath="$PROJECT_DIR$/config/config.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handler/user/userHandler.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/user/userHandler.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/middleware/middleware.go" beforeDir="false" afterPath="$PROJECT_DIR$/middleware/middleware.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/model.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/model.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/router/router.go" beforeDir="false" afterPath="$PROJECT_DIR$/router/router.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/initDB/initDB.go" beforeDir="false" afterPath="$PROJECT_DIR$/initDB/initDB.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
