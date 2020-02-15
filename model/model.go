@@ -5,13 +5,13 @@ import (
 )
 
 type Student struct {
-	StudentID uint64 `gorm:"primary_key"`
+	StudentID string `gorm:"primary_key";"'`
 	Name      string `gorm:"size:32;index;not null"`
-	ClassID   uint   `gorm:"not null"`
-	QQ        uint64
+	ClassID   string   `gorm:"not null"`
+	QQ        string
 	Address   string `gorm:"not null"`
-	Phone     uint64
-	Families  []*Family `gorm:"many2many:par_child"`
+	Phone     string
+	//Families  []*Family `gorm:"many2many:par_child"`
 	Major     string    `gorm:"not null;unique"`
 	College   string    `gorm:"not null;unique"`
 }
@@ -20,19 +20,19 @@ type Family struct {
 	gorm.Model
 	Name     string     `gorm:"size:32;index;not null"`
 	Relation string     `gorm:"not null"`
-	Student  []*Student `gorm:"many2many:par_child"`
+	//Student  []*Student `gorm:"many2many:par_child"`
 }
 
 type Admin struct {
-	AdminID uint   `gorm:"primary_key"'`
+	AdminID string   `gorm:"primary_key"`
 	Name    string `gorm:"size:32;index;not null"`
 }
 
 type Teacher struct {
-	TeacherID uint64 `gorm:"primary_key"`
+	TeacherID string `gorm:"primary_key"`
 	Name      string `gorm:"size:32;index;not null"`
-	ClassID   uint   `gorm:"not null"`
-	QQ        uint64
-	Phone     uint64
+	ClassID   string   `gorm:"not null"`
+	QQ        string
+	Phone     string
 	Major     string `gorm:"not null;unique"`
 }

@@ -10,7 +10,10 @@ import (
 	"net/http"
 )
 
-var Token string
+var (
+	Token string
+	Role string
+)
 
 func Login(c *gin.Context) {
 	userID := c.Param("userID")
@@ -33,7 +36,7 @@ func Login(c *gin.Context) {
 
 	signedToken, err := getToken(claims)
 	if err != nil {
-		result.Message = "ErrorReasonReLogin"
+		result.Message = config.ErrorReasonReLogin
 		c.JSON(http.StatusOK, gin.H{"result": result})
 	}
 	if initDB.TokenExist(signedToken) == true {
@@ -81,6 +84,8 @@ func Register(c *gin.Context) {
 		result.Message = "注册失败，账号已存在"
 		c.JSON(200, gin.H{"result": result})
 	} else {
+		Role = role
+		
 		user := initDB.User{
 			Token:  signedToken,
 			UserID: userID,
@@ -91,8 +96,54 @@ func Register(c *gin.Context) {
 			c.JSON(200, gin.H{"result": "角色重复"})
 
 		} else {
-			c.JSON(200, gin.H{"result": result})
+			c.JSON(301, gin.H{"result": result})
 		}
 	}
+} 
 
+
+func InsertMsg(c *gin.Context) {
+	switch Role {
+	case "student":
+		student := model.Student{
+			StudentID: c.PostForm("StudentID"),
+			Name:      c.PostForm("Name"),
+			ClassID:   c.PostForm("ClassID"),
+			QQ:        c.PostForm("QQ"),
+			Address:   c.PostForm("Address"),
+			Phone:     c.PostForm("Phone"),
+			//Families:  nil,
+			Major:     c.PostForm("Major"),
+			College:   c.PostForm("College"),
+		}
+		initDB.Db.Create(&student)
+		c.String(200, config.InsertMsgSusses)
+	case "teacher":
+		teacher := model.Teacher{
+			TeacherID: c.PostForm("TeacherID"),
+			Name:      c.PostForm("Name"),
+			ClassID:   c.PostForm("ClassID"),
+			QQ:        c.PostForm("QQ"),
+			Phone:     c.PostForm("Phone"),
+			Major:     c.PostForm("Major"),
+		}
+		initDB.Db.Create(&teacher)
+		c.String(200, config.InsertMsgSusses)
+	case "admin":
+		admin := model.Admin{
+			AdminID: c.PostForm("AdminID"),
+			Name:    c.PostForm("Name"),
+		}
+		initDB.Db.Create(&admin)
+		c.String(200, config.InsertMsgSusses)
+	default:
+		c.String(200, config.ErrorInsert)
+	}
+	Role = "empty"
+}
+
+
+func Logout(c *gin.Context) {
+	Token = ""
+	c.String(200,config.Logout)
 }

@@ -2,17 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ba7236ca-4149-4f81-b86d-536d24e2f1b7" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/middleware/middleware.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/router/router.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Database/db.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/config.go" beforeDir="false" afterPath="$PROJECT_DIR$/config/config.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/handler/user/userHandler.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/user/userHandler.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/initDB/initDB.go" beforeDir="false" afterPath="$PROJECT_DIR$/initDB/initDB.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.gp.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/jwt.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/jwt.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/middleware/middleware.go" beforeDir="false" afterPath="$PROJECT_DIR$/middleware/middleware.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model/model.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/model.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/router/router.go" beforeDir="false" afterPath="$PROJECT_DIR$/router/router.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,6 +41,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="DefaultGoTemplateProperty" value="Go File" />
+    <property name="GO_FMT" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -88,6 +85,10 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="msg" />
+    <option name="LAST_COMMIT_MESSAGE" value="msg" />
+  </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>
     <proxy>https://goproxy.cn</proxy>
@@ -97,37 +98,45 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="191" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.680@0.0.1280.680" timestamp="1581673842528" />
+    <state x="418" y="51" key="#com.intellij.ide.util.MemberChooser" timestamp="1581760914699">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="418" y="51" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680@0.0.1280.680" timestamp="1581760914699" />
     <state x="671" y="0" key="#go_build_main.gp.go" timestamp="1581673813721">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="671" y="0" key="#go_build_main.gp.go/0.0.1280.680@0.0.1280.680" timestamp="1581673813721" />
-    <state x="421" y="96" key="FileChooserDialogImpl" timestamp="1581671649142">
+    <state x="250" y="0" key="CommitChangelistDialog2" timestamp="1581681069945">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="421" y="96" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1581671649142" />
-    <state width="1237" height="163" key="GridCell.Tab.0.bottom" timestamp="1581675502761">
+    <state x="250" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1581681069945" />
+    <state x="421" y="96" key="FileChooserDialogImpl" timestamp="1581687936803">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="163" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1581675502761" />
-    <state width="1237" height="163" key="GridCell.Tab.0.center" timestamp="1581675502760">
+    <state x="421" y="96" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1581687936803" />
+    <state width="1237" height="162" key="GridCell.Tab.0.bottom" timestamp="1581789966883">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="163" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1581675502760" />
-    <state width="1237" height="163" key="GridCell.Tab.0.left" timestamp="1581675502760">
+    <state width="1237" height="162" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1581789966883" />
+    <state width="1237" height="162" key="GridCell.Tab.0.center" timestamp="1581789966883">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="163" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1581675502760" />
-    <state width="1237" height="163" key="GridCell.Tab.0.right" timestamp="1581675502761">
+    <state width="1237" height="162" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1581789966883" />
+    <state width="1237" height="162" key="GridCell.Tab.0.left" timestamp="1581789966883">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="163" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1581675502761" />
+    <state width="1237" height="162" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1581789966883" />
+    <state width="1237" height="162" key="GridCell.Tab.0.right" timestamp="1581789966883">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="162" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1581789966883" />
     <state x="247" y="0" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1581610479447">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="247" y="0" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1280.680@0.0.1280.680" timestamp="1581610479447" />
-    <state x="623" y="1" width="672" height="678" key="search.everywhere.popup" timestamp="1581673701551">
+    <state x="623" y="1" width="672" height="678" key="search.everywhere.popup" timestamp="1581786695356">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="623" y="1" width="672" height="678" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" timestamp="1581673701551" />
+    <state x="623" y="1" width="672" height="678" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" timestamp="1581786695356" />
   </component>
 </project>
